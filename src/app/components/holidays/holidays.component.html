@@ -1,0 +1,10 @@
+<div class="holidays">
+    <div class="day-off-holidays">
+        <div class="title">1. Danh sách ngày đại lễ (Được nghỉ)</div>
+        <div class="list">
+            <div class="holiday" *ngFor="let holiday of hasDayOffGroup">
+                {{holiday.name}} - {{(holiday.solarDate) | DateVietnamPipe}}
+            </div>
+        </div>
+    </div>
+</div>
