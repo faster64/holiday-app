@@ -29,10 +29,6 @@ export class AppComponent implements OnInit, OnDestroy {
     if (environment.production) {
       this.logGreeting();
     }
-    this.eventSubscribe();
-  }
-
-  eventSubscribe() {
     this.handleRouteChange();
   }
 
