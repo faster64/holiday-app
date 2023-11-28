@@ -84,7 +84,7 @@ export class MessageBox implements OnInit {
       const configInstance = MessageBox.dialogRef._containerInstance._config;
       const messageInstance = configInstance?.data?.data?.content;
       if (message.data.content == messageInstance) {
-        console.customize("blocked 1 pop-up with the same message");
+        console.log("blocked 1 pop-up with the same message");
         return MessageBox.dialogRef.afterClosed();
       }
     }
@@ -103,7 +103,7 @@ export class MessageBox implements OnInit {
       const configInstance = MessageBox.dialogRef._containerInstance._config;
       const messageInstance = configInstance?.data?.data?.content;
       if (message.data.content == messageInstance) {
-        console.customize("blocked 1 pop-up with the same message");
+        console.log("blocked 1 pop-up with the same message");
         return MessageBox.dialogRef.afterClosed();
       }
     }
@@ -122,7 +122,7 @@ export class MessageBox implements OnInit {
       const configInstance = MessageBox.dialogRef._containerInstance._config;
       const messageInstance = configInstance?.data?.data?.content;
       if (message.data.content == messageInstance) {
-        console.customize("blocked 1 pop-up with the same message");
+        console.log("blocked 1 pop-up with the same message");
         return of(false);
       }
     }
@@ -141,7 +141,7 @@ export class MessageBox implements OnInit {
       const configInstance = MessageBox.dialogRef._containerInstance._config;
       const messageInstance = configInstance?.data?.data?.content;
       if (message.data.content == messageInstance) {
-        console.customize("blocked 1 pop-up with the same message");
+        console.log("blocked 1 pop-up with the same message");
         return MessageBox.dialogRef.afterClosed();
       }
     }

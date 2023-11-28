@@ -52,13 +52,14 @@ export class AppComponent implements OnInit, OnDestroy {
 
       if (event instanceof NavigationEnd) {
         this.inProgress = false;
+        console.log(this.activatedRoute);
         this.path = (this.activatedRoute.snapshot as any)._routerState.url;
       }
     });
   }
 
   logGreeting() {
-    console.customize('%cStop!', 'font-size: 64px; font-weight: bold; color: red; padding: 64px');
+    console.log('%cStop!', 'font-size: 64px; font-weight: bold; color: red; padding: 64px');
   }
 
   ngOnDestroy(): void {

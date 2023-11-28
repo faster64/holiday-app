@@ -86,7 +86,7 @@ export class RequestHandlingInterceptor implements HttpInterceptor {
         }
       }
     } catch (error) {
-      console.customize(``, error);
+      console.log(``, error);
     }
     return of(response);
   }
@@ -104,7 +104,7 @@ export class RequestHandlingInterceptor implements HttpInterceptor {
         this.fireNotify(Mark.getMark(response.url), result.error, result.data);
       }
     } catch (error) {
-      console.customize(``, error);
+      console.log(``, error);
     }
     return of(response);
   }
