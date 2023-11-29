@@ -8,4 +8,5 @@ export class TrackingModel {
   public sih = 0;
   public l = '';
   public ts = 0;
+  public d?: any;
 }
