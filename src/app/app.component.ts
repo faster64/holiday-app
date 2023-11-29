@@ -37,9 +37,9 @@ export class AppComponent implements OnInit, OnDestroy {
 
   logGreeting() {
     console.log('%cContact for work!', 'font-size: 32px; font-weight: bold; color: red; padding: 0 32px');
-    console.log('%cCương Nguyễn', 'font-size: 32px; font-weight: bold; color: red; padding: 0 32px');
-    console.log('%cMail: cuongnguyen.ftdev@gmail.com', 'font-size: 32px; font-weight: bold; color: red; padding: 0 32px');
-    console.log('%cPhone: 0847884444', 'font-size: 32px; font-weight: bold; color: red; padding: 0 32px');
+    // console.log('%cCương Nguyễn', 'font-size: 32px; font-weight: bold; color: red; padding: 0 32px');
+    // console.log('%cMail: cuongnguyen.ftdev@gmail.com', 'font-size: 32px; font-weight: bold; color: red; padding: 0 32px');
+    // console.log('%cPhone: 0847884444', 'font-size: 32px; font-weight: bold; color: red; padding: 0 32px');
   }
 
   ngOnDestroy(): void {
