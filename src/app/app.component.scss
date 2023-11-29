@@ -27,6 +27,11 @@
         height: calc(100% - var(--top));
         overflow: auto;
     }
+    .fb-share-button {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+    }
 }
 
 ::ng-deep {
