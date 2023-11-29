@@ -39,6 +39,6 @@
 </div>
 
 
-<dx-popup [width]="360" [height]="'auto'" [(visible)]="isShow" [hideOnOutsideClick]="true" [showCloseButton]="true" [showTitle]="true" [title]="holiday.name">
+<dx-popup [width]="device == DeviceType.Desktop ? 480 : 360" [height]="'auto'" [(visible)]="isShow" [hideOnOutsideClick]="true" [showCloseButton]="true" [showTitle]="true" [title]="holiday.name">
     <div class="description">{{holiday.description}}</div>
 </dx-popup>

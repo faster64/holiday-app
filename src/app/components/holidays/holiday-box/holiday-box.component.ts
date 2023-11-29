@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Holiday } from 'src/app/models/holiday/holiday';
+import { DeviceType } from 'src/app/shared/enumerations/device.enum';
 
 @Component({
   selector: 'app-holiday-box',
@@ -7,6 +8,7 @@ import { Holiday } from 'src/app/models/holiday/holiday';
   styleUrls: ['./holiday-box.component.scss']
 })
 export class HolidayBoxComponent implements OnInit {
+  DeviceType = DeviceType;
 
   days = 0;
   hours = 0;
@@ -16,6 +18,9 @@ export class HolidayBoxComponent implements OnInit {
 
   @Input("holiday")
   holiday: Holiday;
+
+  @Input("device")
+  device: DeviceType;
 
   ngOnInit(): void {
     this.setCountDown(this.holiday.remainingSeconds);

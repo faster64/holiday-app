@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute, NavigationEnd, NavigationStart, Router } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
@@ -12,17 +12,12 @@ import { Routing } from './shared/constants/common.constant';
 })
 export class AppComponent implements OnInit, OnDestroy {
   Routing = Routing;
-
-  inProgress = false;
-  progressValue = 35;
-  _onDestroySub: Subject<void> = new Subject<void>();
-  lostConnection = false;
-
   path = '';
+  _onDestroySub: Subject<void> = new Subject<void>();
 
   constructor(
     public router: Router,
-    public activatedRoute: ActivatedRoute
+    public activatedRoute: ActivatedRoute,
   ) { }
 
   ngOnInit() {
@@ -34,20 +29,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
   handleRouteChange() {
     this.router.events.pipe(takeUntil(this._onDestroySub)).subscribe(async (event: any) => {
-      if (event instanceof NavigationStart) {
-        this.inProgress = true;
-        this.progressValue = 35;
-        const id = setInterval(() => {
-          if (this.progressValue >= 90) {
-            clearInterval(id);
-            return;
-          }
-          this.progressValue += 1;
-        }, 20);
-      }
-
       if (event instanceof NavigationEnd) {
-        this.inProgress = false;
         this.path = (this.activatedRoute.snapshot as any)._routerState.url;
       }
     });
