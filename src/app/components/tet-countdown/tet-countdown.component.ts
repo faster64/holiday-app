@@ -14,6 +14,7 @@ export class TetCountdownComponent extends BaseComponent implements OnInit {
   hours = 0;
   minutes = 0;
   seconds = 0;
+  tetHoliday = new Holiday();
 
   constructor(
     public override injector: Injector,
@@ -36,8 +37,8 @@ export class TetCountdownComponent extends BaseComponent implements OnInit {
       .pipe(takeUntil(this._onDestroySub))
       .subscribe(resp => {
         if (resp.status == 'success') {
-          const tetHoliday = resp.data.find(x => x.isLunarTet) as Holiday;
-          this.setTetHolidayTimer(tetHoliday.remainingSeconds - 1);
+          this.tetHoliday = resp.data.find(x => x.isLunarTet) as Holiday;
+          this.setTetHolidayTimer(this.tetHoliday.remainingSeconds - 1);
         }
       });
   }
