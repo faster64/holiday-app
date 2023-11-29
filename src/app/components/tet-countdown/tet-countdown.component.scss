@@ -9,7 +9,6 @@
         margin-bottom: 24px;
         .title {
             flex-basis: 100%;
-            margin-right: 80px;
             margin-bottom: 28px;
             text-align: center;
             font-size: 20px;
@@ -54,6 +53,39 @@
             margin-top: 48px;
             font-size: 18px;
             color: #fff;
+        }
+    }
+    &.mobile {
+        .calendar-timer {
+            .title,
+            .clock-item {
+                font-family: monospace !important;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .tet-countdown {
+        .calendar-timer {
+            .blocks {
+                .clock-item {
+                    width: 56px;
+                    height: 56px;
+                    margin-right: 12px;
+                    .time {
+                        height: 40%;
+                        font-size: 20px;
+                    }
+                    .text {
+                        height: 60%;
+                        font-size: 16px;
+                    }
+                }
+            }
+            .description {
+                font-size: 14px;
+            }
         }
     }
 }

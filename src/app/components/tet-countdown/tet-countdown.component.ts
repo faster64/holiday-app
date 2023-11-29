@@ -3,6 +3,7 @@ import { BaseComponent } from 'src/app/shared/components/base-component';
 import { HolidayService } from 'src/app/shared/services/holiday/holiday.service';
 import { takeUntil } from 'rxjs';
 import { Holiday } from 'src/app/models/holiday/holiday';
+import { DeviceType } from 'src/app/shared/enumerations/device.enum';
 
 @Component({
   selector: 'app-tet-countdown',
@@ -15,6 +16,7 @@ export class TetCountdownComponent extends BaseComponent implements OnInit {
   minutes = 0;
   seconds = 0;
   tetHoliday = new Holiday();
+  device = DeviceType.Desktop;
 
   constructor(
     public override injector: Injector,
@@ -25,6 +27,7 @@ export class TetCountdownComponent extends BaseComponent implements OnInit {
 
   override ngOnInit(): void {
     super.ngOnInit();
+    this.device = this.getDevice();
     this.getHolidays();
   }
 
@@ -61,5 +64,12 @@ export class TetCountdownComponent extends BaseComponent implements OnInit {
 
     this.minutes = Math.floor(this.seconds / 60);
     this.seconds -= this.minutes * 60;
+  }
+
+  getDevice() {
+    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+      return DeviceType.Mobile;
+    }
+    return DeviceType.Desktop;
   }
 }

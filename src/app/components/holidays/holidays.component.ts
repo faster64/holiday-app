@@ -2,6 +2,7 @@ import { Component, Injector } from '@angular/core';
 import { takeUntil } from 'rxjs';
 import { Holiday } from 'src/app/models/holiday/holiday';
 import { BaseComponent } from 'src/app/shared/components/base-component';
+import { DeviceType } from 'src/app/shared/enumerations/device.enum';
 import { HolidayService } from 'src/app/shared/services/holiday/holiday.service';
 
 @Component({
@@ -12,11 +13,8 @@ import { HolidayService } from 'src/app/shared/services/holiday/holiday.service'
 export class HolidaysComponent extends BaseComponent {
 
   groups = {};
-
   hasDayOffGroup: Holiday[] = [];
-
   solarHolidays: Holiday[] = [];
-
   lunarHolidays: Holiday[] = [];
 
   constructor(

@@ -1,4 +1,4 @@
-<div class="tet-countdown">
+<div class="tet-countdown" [ngClass]="device == DeviceType.Desktop ? 'web' : 'mobile'">
     <div class="calendar-timer">
         <div class="title">Sắp Tết rồi!!! Chỉ còn...</div>
         <div class="blocks">
