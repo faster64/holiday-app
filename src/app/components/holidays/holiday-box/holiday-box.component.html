@@ -1,0 +1,44 @@
+<div class="holiday-box" (click)="isShow = true">
+    <div class="item name">{{holiday.name}}</div>
+
+    <div class="item solar-date">
+        <div class="item-title">› Dương lịch:</div>
+        <div class="item-value">{{holiday.solarDate | DateVietnamPipe}}</div>
+    </div>
+
+    <div class="item lunar-date">
+        <div class="item-title">› Âm lịch:</div>
+        <div class="item-value">{{holiday.lunarDate | DateVietnamPipe}}</div>
+    </div>
+
+    <div class="item day-off">
+        <div class="item-title">› Số ngày nghỉ:</div>
+        <div class="item-value">{{!holiday.dayOffValue ? 'Không' : (holiday.dayOffValue | NumberFormatPipe)}}</div>
+    </div>
+
+    <div class="item count-down">
+        <div class="item-value">
+            <div class="clock-item">
+                <div class="time">{{days}}</div>
+                <div class="text">Ngày</div>
+            </div>
+            <div class="clock-item">
+                <div class="time">{{hours}}</div>
+                <div class="text">Giờ</div>
+            </div>
+            <div class="clock-item">
+                <div class="time">{{minutes}}</div>
+                <div class="text">Phút</div>
+            </div>
+            <div class="clock-item">
+                <div class="time">{{seconds}}</div>
+                <div class="text">Giây</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<dx-popup [width]="360" [height]="'auto'" [(visible)]="isShow" [hideOnOutsideClick]="true" [showCloseButton]="true" [showTitle]="true" [title]="holiday.name">
+    <div class="description">{{holiday.description}}</div>
+</dx-popup>

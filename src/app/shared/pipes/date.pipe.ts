@@ -13,6 +13,6 @@ export class DateVietnamPipe implements PipeTransform {
     let dayStr = day < 10 ? `0${day}` : day;
     let monthStr = month < 10 ? `0${month}` : month;
 
-    return `${dayStr}-${monthStr}-${date.getFullYear()}`;
+    return `${dayStr}/${monthStr}/${date.getFullYear()}`;
   }
 }

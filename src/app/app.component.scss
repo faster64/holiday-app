@@ -25,6 +25,7 @@
     }
     .app-content {
         height: calc(100% - var(--top));
+        overflow: auto;
     }
 }
 

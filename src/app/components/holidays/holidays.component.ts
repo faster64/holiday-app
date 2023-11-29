@@ -15,6 +15,10 @@ export class HolidaysComponent extends BaseComponent {
 
   hasDayOffGroup: Holiday[] = [];
 
+  solarHolidays: Holiday[] = [];
+
+  lunarHolidays: Holiday[] = [];
+
   constructor(
     injector: Injector,
     public holidayService: HolidayService
@@ -35,18 +39,8 @@ export class HolidaysComponent extends BaseComponent {
           this.hasDayOffGroup = holidays.filter(x => x.dayOffValue > 0);
           holidays = holidays.filter(x => !x.dayOffValue);
 
-          holidays.forEach(holiday => {
-            const key = `h${holiday.holidayCategoryId}`;
-
-            if (this.groups[key]) {
-              (this.groups[key] as Array<Holiday>).push(holiday);
-            } else {
-              this.groups[key] = [holiday];
-            }
-          });
-
-          console.log(this.hasDayOffGroup);
-          console.log(this.groups);
+          this.solarHolidays = holidays.filter(x => x.isSolar);
+          this.lunarHolidays = holidays.filter(x => !x.isSolar);
         }
       });
   }

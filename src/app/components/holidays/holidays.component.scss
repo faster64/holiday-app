@@ -1,23 +1,18 @@
 .holidays {
     padding: 16px;
-    .title {
-        margin-bottom: 20px;
-        font-weight: 500;
-        font-size: 20px;
-    }
-    .list {
-        display: flex;
-        flex-wrap: wrap;
-        padding-left: 12px;
-        .holiday {
-            width: 240px;
-            height: 200px;
-            padding: 16px;
-            margin: 0 12px 24px 12px;
-            border-radius: 4px;
-            box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 10px;
-            .item {
-                margin-bottom: 12px;
+    .group {
+        margin-bottom: 28px;
+        .title {
+            margin-bottom: 20px;
+            font-weight: 500;
+            font-size: 20px;
+        }
+        .list {
+            display: flex;
+            flex-wrap: wrap;
+            padding-left: 12px;
+            .holiday {
+                margin: 0 12px 24px 12px;
             }
         }
     }

@@ -1,18 +1,27 @@
 <div class="holidays">
-    <div class="day-off-holidays">
+    <div class="group day-off-holidays">
         <div class="title">1. Danh sách ngày đại lễ (được nghỉ)</div>
         <div class="list">
             <div class="holiday" *ngFor="let holiday of hasDayOffGroup">
-                <div class="item name">
-                    {{holiday.name}}
-                </div>
+                <app-holiday-box [holiday]="holiday"></app-holiday-box>
+            </div>
+        </div>
+    </div>
 
-                <div class="item solar-date">
-                    Dương lịch: {{(holiday.solarDate) | DateVietnamPipe}}
-                </div>
-                <div class="item lunar-date">
-                    Âm lịch: {{(holiday.lunarDate) | DateVietnamPipe}}
-                </div>
+    <div class="group solar-holidays">
+        <div class="title">2. Danh sách ngày lễ theo dương lịch</div>
+        <div class="list">
+            <div class="holiday" *ngFor="let holiday of solarHolidays">
+                <app-holiday-box [holiday]="holiday"></app-holiday-box>
+            </div>
+        </div>
+    </div>
+
+    <div class="group lunar-holidays">
+        <div class="title">2. Danh sách ngày lễ theo dương lịch</div>
+        <div class="list">
+            <div class="holiday" *ngFor="let holiday of lunarHolidays">
+                <app-holiday-box [holiday]="holiday"></app-holiday-box>
             </div>
         </div>
     </div>
