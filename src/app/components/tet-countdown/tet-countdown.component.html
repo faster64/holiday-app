@@ -19,6 +19,20 @@
                 <div class="text">Giây</div>
             </div>
         </div>
+        <div class="can-chi">
+            {{canchi}} {{year}}
+        </div>
+        <div class="more">
+            <div class="more-item solar-date">
+                <span class="date-title">Dương lịch:</span>
+                <span>{{dayName}},</span>
+                <span>{{tetHoliday.solarDate | DateVietnamPipe}}</span>
+            </div>
+            <div class="more-item lunar-date">
+                <span class="date-title">Âm lịch:</span>
+                <span>{{tetHoliday.lunarDate | DateVietnamPipe}}</span>
+            </div>
+        </div>
         <div class="description">
             {{tetHoliday.description}}
         </div>

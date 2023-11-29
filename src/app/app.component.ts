@@ -26,7 +26,7 @@ export class AppComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
-    if (environment.production || true) {
+    if (environment.production) {
       this.logGreeting();
     }
     this.handleRouteChange();

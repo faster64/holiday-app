@@ -174,4 +174,64 @@ export class DateHelper {
     }
     return `${Math.floor(hours / 24)}d ago`;
   }
+
+  public static getCan(year: number) {
+    switch (year % 10) {
+      case 0:
+        return "CANH";
+      case 1:
+        return "TÂN";
+      case 2:
+        return "NHÂM";
+      case 3:
+        return "QUÝ";
+      case 4:
+        return "GIÁP";
+      case 5:
+        return "ẤT";
+      case 6:
+        return "BÍNH";
+      case 7:
+        return "ĐINH";
+      case 8:
+        return "MẬU";
+      case 9:
+        return "KỶ";
+    }
+    return "";
+  }
+
+  public static getChi(year: number) {
+    switch (year % 12) {
+      case 0:
+        return "THÂN";
+      case 1:
+        return "DẬU";
+      case 2:
+        return "TUẤT";
+      case 3:
+        return "HỢI";
+      case 4:
+        return "TÝ";
+      case 5:
+        return "SỬU";
+      case 6:
+        return "DẦN";
+      case 7:
+        return "MẸO";
+      case 8:
+        return "THÌN";
+      case 9:
+        return "TỴ";
+      case 10:
+        return "NGỌ";
+      case 11:
+        return "MÙI";
+    }
+    return "";
+  }
+
+  public static getCanChi(year: number) {
+    return this.getCan(year) + " " + this.getChi(year);
+  }
 }

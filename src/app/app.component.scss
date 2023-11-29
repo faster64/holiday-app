@@ -25,7 +25,8 @@
     }
     .app-content {
         height: calc(100% - var(--top));
-        overflow: auto;
+        overflow-x: hidden;
+        overflow-y: auto;
     }
     .fb-share-button {
         position: fixed;

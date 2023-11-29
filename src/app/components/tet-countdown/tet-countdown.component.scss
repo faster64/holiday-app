@@ -1,26 +1,23 @@
 .tet-countdown {
     height: 100%;
     padding-top: 48px;
-    background-color: #FFC937;
+    background-color: #fff;
     background-image: url(../../../assets/img/traditional-tet-holiday.jpg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     .calendar-timer {
-        display: flex;
-        align-items: center;
-        flex-wrap: wrap;
         padding: 24px 16px;
         margin: 0 24px;
         border-radius: 8px;
         background-color: #ddd;
         opacity: 0.95;
+        font-family: "Dancing Script", cursive;
         .title {
             flex-basis: 100%;
             margin-bottom: 28px;
             text-align: center;
             font-size: 20px;
-            font-family: "Dancing Script", cursive;
             font-weight: 700;
             color: #333;
         }
@@ -33,7 +30,6 @@
                 width: 100px;
                 height: 100px;
                 margin-right: 24px;
-                font-family: "Dancing Script", cursive;
                 .time {
                     height: 60%;
                     border-top-left-radius: 28px;
@@ -59,18 +55,35 @@
         }
         .description {
             padding: 8px 48px;
-            margin-top: 48px;
             font-size: 18px;
             font-weight: 600;
             color: #333;
         }
+        .can-chi {
+            margin-top: 24px;
+            font-size: 20px;
+            font-weight: 700;
+            color: #333;
+            text-align: center;
+        }
+        .more {
+            padding: 8px 48px;
+            margin-top: 36px;
+            font-size: 18px;
+            font-weight: 600;
+            color: #333;
+            .more-item {
+                margin-bottom: 12px;
+                .date-title {
+                    display: inline-block;
+                    width: 88px;
+                }
+            }
+        }
     }
     &.mobile {
         .calendar-timer {
-            .title,
-            .clock-item {
-                font-family: monospace !important;
-            }
+            font-family: monospace !important;
         }
     }
 }
@@ -93,7 +106,11 @@
                     }
                 }
             }
-            .description {
+            .can-chi {
+                font-size: 18px;
+            }
+            .description,
+            .more {
                 font-size: 14px;
             }
         }

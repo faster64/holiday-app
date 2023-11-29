@@ -4,6 +4,7 @@ import { HolidayService } from 'src/app/shared/services/holiday/holiday.service'
 import { takeUntil } from 'rxjs';
 import { Holiday } from 'src/app/models/holiday/holiday';
 import { DeviceType } from 'src/app/shared/enumerations/device.enum';
+import { DateHelper } from 'src/app/shared/helpers/date.helper';
 
 @Component({
   selector: 'app-tet-countdown',
@@ -16,6 +17,9 @@ export class TetCountdownComponent extends BaseComponent implements OnInit {
   minutes = 0;
   seconds = 0;
   tetHoliday = new Holiday();
+  dayName = '';
+  year = 0;
+  canchi = '';
   device = DeviceType.Desktop;
 
   constructor(
@@ -41,6 +45,9 @@ export class TetCountdownComponent extends BaseComponent implements OnInit {
       .subscribe(resp => {
         if (resp.status == 'success') {
           this.tetHoliday = resp.data.find(x => x.isLunarTet) as Holiday;
+          this.dayName = DateHelper.getDayVietnamName(new Date(this.tetHoliday.solarDate));
+          this.year = new Date(this.tetHoliday.solarDate).getFullYear();
+          this.canchi = DateHelper.getCanChi(this.year);
           this.setTetHolidayTimer(this.tetHoliday.remainingSeconds - 1);
         }
       });
