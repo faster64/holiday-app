@@ -2,11 +2,19 @@
     height: 100%;
     padding-top: 48px;
     background-color: #FFC937;
+    background-image: url(../../../assets/img/traditional-tet-holiday.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
     .calendar-timer {
         display: flex;
         align-items: center;
         flex-wrap: wrap;
-        margin-bottom: 24px;
+        padding: 24px 16px;
+        margin: 0 24px;
+        border-radius: 8px;
+        background-color: #ddd;
+        opacity: 0.95;
         .title {
             flex-basis: 100%;
             margin-bottom: 28px;
@@ -14,6 +22,7 @@
             font-size: 20px;
             font-family: "Dancing Script", cursive;
             font-weight: 700;
+            color: #333;
         }
         .blocks {
             flex-basis: 100%;
@@ -52,7 +61,8 @@
             padding: 8px 48px;
             margin-top: 48px;
             font-size: 18px;
-            color: #fff;
+            font-weight: 600;
+            color: #333;
         }
     }
     &.mobile {
