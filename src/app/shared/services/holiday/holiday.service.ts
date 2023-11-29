@@ -19,7 +19,7 @@ export class HolidayService extends HttpService {
     }
 
     public getHolidays() {
-        const url = `${environment.base_host}/holidays?client=${Math.floor(Date.now() / 1000)}`;
+        const url = `${environment.base_host}/holidays?ts=${Math.floor(Date.now() / 1000)}`;
         return this.get<ServiceResult>(url);
     }
 }
