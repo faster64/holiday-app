@@ -1,4 +1,4 @@
-<div class="holidays">
+<div class="holidays" [ngClass]="device == DeviceType.Desktop ? 'web' : 'mobile'">
     <div class="group day-off-holidays">
         <div class="title">1. Danh sách ngày đại lễ (được nghỉ)</div>
         <div class="list">

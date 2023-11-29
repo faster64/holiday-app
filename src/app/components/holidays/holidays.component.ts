@@ -13,9 +13,14 @@ import { HolidayService } from 'src/app/shared/services/holiday/holiday.service'
 export class HolidaysComponent extends BaseComponent {
 
   groups = {};
+
   hasDayOffGroup: Holiday[] = [];
+
   solarHolidays: Holiday[] = [];
+
   lunarHolidays: Holiday[] = [];
+
+  device = DeviceType.Desktop;
 
   constructor(
     injector: Injector,
@@ -26,6 +31,7 @@ export class HolidaysComponent extends BaseComponent {
 
   override ngOnInit(): void {
     super.ngOnInit();
+    this.device = this.getDevice();
     this.holidayService
       .getHolidays()
       .pipe(takeUntil(this._onDestroySub))
@@ -41,5 +47,12 @@ export class HolidaysComponent extends BaseComponent {
           this.lunarHolidays = holidays.filter(x => !x.isSolar);
         }
       });
+  }
+
+  getDevice() {
+    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+      return DeviceType.Mobile;
+    }
+    return DeviceType.Desktop;
   }
 }
