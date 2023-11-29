@@ -78,7 +78,7 @@
         margin-bottom: 12px;
         .date-title {
           display: inline-block;
-          width: 108px;
+          width: 136px;
         }
         span {
           font-size: 18px;
@@ -119,6 +119,11 @@
         padding: 8px 16px !important;
         span {
           font-size: 13px !important;
+        }
+        .more-item {
+          .date-title {
+            width: 108px !important;
+          }
         }
       }
     }
