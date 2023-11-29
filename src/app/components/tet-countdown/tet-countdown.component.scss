@@ -115,7 +115,9 @@
             .description,
             .more {
                 padding: 8px 16px !important;
-                font-size: 14px !important;
+                span {
+                  font-size: 14px !important;
+                }
             }
         }
     }
