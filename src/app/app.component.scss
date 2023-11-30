@@ -89,12 +89,12 @@
             padding: 4px 8px;
             .item {
                 padding: 0 8px;
-                margin-right: 12px;
+                margin-right: 8px;
                 .text {
-                    font-size: 13px;
+                    font-size: 12px;
                 }
                 &.selected {
-                    border-bottom: 2px solid #fff;
+                    border-bottom: 1px solid #fff;
                 }
             }
         }

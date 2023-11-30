@@ -14,6 +14,7 @@ import { DateTimeVietnamPipe } from "./pipes/date-time.pipe";
 import { DateVietnamPipe } from "./pipes/date.pipe";
 import { NumberFormatPipe } from "./pipes/number-format.pipe";
 import { TimePipe } from "./pipes/time.pipe";
+import { PrettyJsonPipe } from "./pipes/pertty-json.pipe";
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { TimePipe } from "./pipes/time.pipe";
     TimePipe,
     CountDownPipe,
     NumberFormatPipe,
+    PrettyJsonPipe
   ],
   imports: [
     CommonModule,
@@ -44,6 +46,7 @@ import { TimePipe } from "./pipes/time.pipe";
     TimePipe,
     CountDownPipe,
     NumberFormatPipe,
+    PrettyJsonPipe,
     MatProgressBarModule,
     MatTooltipModule,
     MatInputModule,

@@ -1,26 +1,36 @@
 <div id="app" #app>
-    <div class="app-header">
-        <a class="item" [routerLink]="Routing.TET_COUNTDOWN.path" [ngClass]="('/' + Routing.TET_COUNTDOWN.path) == path ? 'selected' : ''">
-            <span class="icon"></span>
-            <span class="text">Tết Nguyên Đán</span>
-        </a>
+  <div class="app-header">
+    <a class="item" [routerLink]="Routing.TET_COUNTDOWN.path"
+      [ngClass]="('/' + Routing.TET_COUNTDOWN.path) == path ? 'selected' : ''">
+      <span class="icon"></span>
+      <span class="text">Tết Nguyên Đán</span>
+    </a>
 
-        <a class="item" [routerLink]="Routing.LIST_HOLIDAYS.path" [ngClass]="('/' + Routing.LIST_HOLIDAYS.path) == path ? 'selected' : ''">
-            <span class="icon"></span>
-            <span class="text">Danh sách ngày lễ</span>
-        </a>
-    </div>
+    <a class="item" [routerLink]="Routing.LIST_HOLIDAYS.path"
+      [ngClass]="('/' + Routing.LIST_HOLIDAYS.path) == path ? 'selected' : ''">
+      <span class="icon"></span>
+      <span class="text">{{sharedService.device == DeviceType.Desktop ? 'Danh sách ngày lễ' : 'Các ngày lễ'}}</span>
+    </a>
 
-    <div #appContent class="app-content">
-        <router-outlet></router-outlet>
-    </div>
+    <a class="item" [routerLink]="Routing.API.path" [ngClass]="('/' + Routing.API.path) == path ? 'selected' : ''">
+      <span class="icon"></span>
+      <span class="text">API</span>
+    </a>
+  </div>
 
-    <h1 style="visibility: hidden;">Đếm ngược ngày đến Tết Nguyên Đán</h1>
-    <h1 style="visibility: hidden;">Danh sách ngày lễ ở Việt Nam</h1>
+  <div #appContent class="app-content">
+    <router-outlet></router-outlet>
+  </div>
 
-    <div class="fb-share-button fb_iframe_widget" data-href="https://www.ngayle.net" data-layout="button_count" data-size="small">
-        <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.ngayle.net%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a>
-    </div>
+  <h1 style="visibility: hidden;">Đếm ngược ngày đến Tết Nguyên Đán</h1>
+  <h1 style="visibility: hidden;">Danh sách ngày lễ ở Việt Nam</h1>
+
+  <div class="fb-share-button fb_iframe_widget" data-href="https://www.ngayle.net" data-layout="button_count"
+    data-size="small">
+    <a target="_blank"
+      href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.ngayle.net%2F&amp;src=sdkpreparse"
+      class="fb-xfbml-parse-ignore">Share</a>
+  </div>
 </div>
 
 <snackbar></snackbar>

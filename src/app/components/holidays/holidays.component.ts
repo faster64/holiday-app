@@ -3,6 +3,7 @@ import { takeUntil } from 'rxjs';
 import { Holiday } from 'src/app/models/holiday/holiday';
 import { BaseComponent } from 'src/app/shared/components/base-component';
 import { DeviceType } from 'src/app/shared/enumerations/device.enum';
+import { SharedService } from 'src/app/shared/services/base/shared.service';
 import { HolidayService } from 'src/app/shared/services/holiday/holiday.service';
 
 @Component({
@@ -20,18 +21,16 @@ export class HolidaysComponent extends BaseComponent {
 
   lunarHolidays: Holiday[] = [];
 
-  device = DeviceType.Desktop;
-
   constructor(
     injector: Injector,
-    public holidayService: HolidayService
+    public holidayService: HolidayService,
+    public sharedService: SharedService
   ) {
     super(injector);
   }
 
   override ngOnInit(): void {
     super.ngOnInit();
-    this.device = this.getDevice();
     this.holidayService
       .getHolidays()
       .pipe(takeUntil(this._onDestroySub))
@@ -47,12 +46,5 @@ export class HolidaysComponent extends BaseComponent {
           this.lunarHolidays = holidays.filter(x => !x.isSolar);
         }
       });
-  }
-
-  getDevice() {
-    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-      return DeviceType.Mobile;
-    }
-    return DeviceType.Desktop;
   }
 }

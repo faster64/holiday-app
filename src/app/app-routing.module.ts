@@ -18,6 +18,13 @@ const routes: Routes = [
     }
   },
   {
+    path: Routing.API.path,
+    loadChildren: () => import('./components/api/api.module').then(m => m.ApiModule),
+    data: {
+      key: Routing.API.key,
+    }
+  },
+  {
     path: "**",
     redirectTo: `/${Routing.TET_COUNTDOWN.path}`,
     pathMatch: 'full'

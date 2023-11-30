@@ -4,6 +4,7 @@ import { Holiday } from 'src/app/models/holiday/holiday';
 import { BaseComponent } from 'src/app/shared/components/base-component';
 import { DeviceType } from 'src/app/shared/enumerations/device.enum';
 import { DateHelper } from 'src/app/shared/helpers/date.helper';
+import { SharedService } from 'src/app/shared/services/base/shared.service';
 import { HolidayService } from 'src/app/shared/services/holiday/holiday.service';
 
 @Component({
@@ -20,18 +21,17 @@ export class TetCountdownComponent extends BaseComponent implements OnInit {
   dayName = '';
   year = 0;
   canchi = '';
-  device = DeviceType.Desktop;
 
   constructor(
     public override injector: Injector,
-    public holidayService: HolidayService
+    public holidayService: HolidayService,
+    public sharedService: SharedService
   ) {
     super(injector);
   }
 
   override ngOnInit(): void {
     super.ngOnInit();
-    this.device = this.getDevice();
     this.getHolidays();
   }
 
@@ -74,12 +74,5 @@ export class TetCountdownComponent extends BaseComponent implements OnInit {
 
     this.minutes = Math.floor(this.seconds / 60);
     this.seconds -= this.minutes * 60;
-  }
-
-  getDevice() {
-    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-      return DeviceType.Mobile;
-    }
-    return DeviceType.Desktop;
   }
 }

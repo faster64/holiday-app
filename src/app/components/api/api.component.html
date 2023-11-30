@@ -1,0 +1,33 @@
+<div class="api-cmp">
+  <div class="api-item">
+    <div class="title">
+      1. Danh sách các ngày lễ ở Việt Nam
+    </div>
+    <div class="content">
+
+      <div class="item-title">
+        Request:
+      </div>
+      <div class="request">
+        <div class="request-method">GET</div>
+        <div class="request-url">
+          <code>https://corej2.com/api/holidays</code>
+        </div>
+      </div>
+
+      <div class="item-title">
+        Response:
+      </div>
+      <div class="response">
+        <pre [innerHTML]="response | prettyjson: [true, 3]"></pre>
+      </div>
+
+      <div class="item-title">
+        Ý nghĩa:
+      </div>
+      <div class="explain">
+        <pre [innerHTML]="explain | prettyjson: [true, 3]"></pre>
+      </div>
+    </div>
+  </div>
+</div>

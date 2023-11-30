@@ -4,6 +4,8 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { Routing } from './shared/constants/common.constant';
+import { SharedService } from './shared/services/base/shared.service';
+import { DeviceType } from './shared/enumerations/device.enum';
 
 @Component({
   selector: 'app-root',
@@ -12,15 +14,20 @@ import { Routing } from './shared/constants/common.constant';
 })
 export class AppComponent implements OnInit, OnDestroy {
   Routing = Routing;
+  DeviceType = DeviceType;
   path = '';
   _onDestroySub: Subject<void> = new Subject<void>();
 
   constructor(
     public router: Router,
     public activatedRoute: ActivatedRoute,
+    public sharedService: SharedService
   ) { }
 
   ngOnInit() {
+    this.sharedService.device = this.getDevice();
+    console.log("Device type: ", this.sharedService.device);
+
     if (environment.production) {
       this.logGreeting();
     }
@@ -49,5 +56,12 @@ export class AppComponent implements OnInit, OnDestroy {
       this._onDestroySub.complete();
       this._onDestroySub.unsubscribe();
     }
+  }
+
+  getDevice() {
+    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+      return DeviceType.Mobile;
+    }
+    return DeviceType.Desktop;
   }
 }

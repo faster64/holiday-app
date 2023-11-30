@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { TrackingModel } from 'src/app/models/base/tracking';
 import { Holiday } from 'src/app/models/holiday/holiday';
 import { DeviceType } from 'src/app/shared/enumerations/device.enum';
+import { SharedService } from 'src/app/shared/services/base/shared.service';
 import { TrackingService } from 'src/app/shared/services/base/tracking.service';
 
 @Component({
@@ -23,12 +24,10 @@ export class HolidayBoxComponent implements OnInit {
   @Input("holiday")
   holiday: Holiday;
 
-  @Input("device")
-  device: DeviceType;
-
   constructor(
     public activatedRoute: ActivatedRoute,
     public trackingService: TrackingService,
+    public sharedService: SharedService
   ) {
 
   }
