@@ -1,10 +1,10 @@
 import { Component, Injector, OnInit } from '@angular/core';
-import { BaseComponent } from 'src/app/shared/components/base-component';
-import { HolidayService } from 'src/app/shared/services/holiday/holiday.service';
 import { takeUntil } from 'rxjs';
 import { Holiday } from 'src/app/models/holiday/holiday';
+import { BaseComponent } from 'src/app/shared/components/base-component';
 import { DeviceType } from 'src/app/shared/enumerations/device.enum';
 import { DateHelper } from 'src/app/shared/helpers/date.helper';
+import { HolidayService } from 'src/app/shared/services/holiday/holiday.service';
 
 @Component({
   selector: 'app-tet-countdown',
@@ -44,9 +44,12 @@ export class TetCountdownComponent extends BaseComponent implements OnInit {
       .pipe(takeUntil(this._onDestroySub))
       .subscribe(resp => {
         if (resp.status == 'success') {
-          this.tetHoliday = resp.data.find(x => x.isLunarTet) as Holiday;
-          this.dayName = DateHelper.getDayVietnamName(new Date(this.tetHoliday.solarDate));
-          this.year = new Date(this.tetHoliday.solarDate).getFullYear();
+          this.tetHoliday = resp.data.find(x => x.date.split('-')[0] == '01' && x.date.split('-')[1] == '01' && !x.isSolar) as Holiday;
+          const items = this.tetHoliday.nextSolar.split('-');
+          const date = new Date(`${items[2]}-${items[1]}-${items[0]}`);
+
+          this.dayName = DateHelper.getDayVietnamName(date);
+          this.year = date.getFullYear();
           this.canchi = DateHelper.getCanChi(this.year);
           this.setTetHolidayTimer(this.tetHoliday.remainingSeconds - 1);
         }

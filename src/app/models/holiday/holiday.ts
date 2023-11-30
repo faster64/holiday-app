@@ -1,14 +1,11 @@
 export class Holiday {
-    public id = '';
     public name = '';
     public description = '';
-    public remainingSeconds = 0;
-    public solarDate = new Date();
-    public lunarDate = new Date();
-    public dayOffValue = 0;
-    public location = '';
-    public holidayCategoryId = 0;
+    public date = new Date();
+    public nextSolar = '';
+    public nextLunar = '';
     public isSolar = true;
-    public isSolarTet = false;
-    public isLunarTet = false;
+    public dayOffValue = 0;
+    public categoryName = '';
+    public remainingSeconds = 0;
 }
