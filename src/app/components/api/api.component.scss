@@ -72,3 +72,13 @@
     }
   }
 }
+
+
+@media screen and (max-width: 576px) {
+  .api-item {
+    .title {
+      font-size: 18px !important;
+      font-family: initial !important;
+    }
+  }
+}

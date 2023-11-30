@@ -39,6 +39,19 @@ export class BaseComponent implements OnInit, OnDestroy {
   }
 
   initData() {
+    const model = this.createModel();
+    this.trackingService
+      .tracking(model)
+      .pipe(takeUntil(this._onDestroySub))
+      .subscribe(resp => console.log('tracking status:', resp));
+  }
+
+  initServices() {
+    this.activatedRoute = this.injector.get(ActivatedRoute);
+    this.trackingService = this.injector.get(TrackingService);
+  }
+
+  createModel() {
     const model: TrackingModel = {
       ev: 'view',
       o: window.location.origin,
@@ -50,14 +63,6 @@ export class BaseComponent implements OnInit, OnDestroy {
       l: window.navigator.language,
       ts: Math.floor(Date.now() / 1000)
     };
-    this.trackingService
-      .tracking(model)
-      .pipe(takeUntil(this._onDestroySub))
-      .subscribe(resp => console.log('tracking status:', resp));
-  }
-
-  initServices() {
-    this.activatedRoute = this.injector.get(ActivatedRoute);
-    this.trackingService = this.injector.get(TrackingService);
+    return model;
   }
 }

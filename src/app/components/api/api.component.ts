@@ -1,11 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, Injector } from '@angular/core';
+import { TrackingModel } from 'src/app/models/base/tracking';
+import { BaseComponent } from 'src/app/shared/components/base-component';
 
 @Component({
   selector: 'app-api',
   templateUrl: './api.component.html',
   styleUrls: ['./api.component.scss']
 })
-export class ApiComponent {
+export class ApiComponent extends BaseComponent {
   codeMirrorOptions: any = {
     mode: "text/x-mysql",
     indentWithTabs: true,
@@ -55,5 +57,26 @@ export class ApiComponent {
       "categoryName": "Loại ngày lễ",
       "remainingSeconds": "Số giây còn lại tính từ hiện tại cho tới ngày lễ, ví dụ: 10000 = 2h 46p 40s"
     }
+  }
+
+  constructor(
+    injector: Injector
+  ) {
+    super(injector);
+  }
+
+  override createModel() {
+    const model: TrackingModel = {
+      ev: 'view-api',
+      o: window.location.origin,
+      p: (this.activatedRoute.snapshot as any)._routerState.url,
+      sw: window.outerWidth,
+      sh: window.outerHeight,
+      siw: window.innerWidth,
+      sih: window.innerHeight,
+      l: window.navigator.language,
+      ts: Math.floor(Date.now() / 1000)
+    };
+    return model;
   }
 }
