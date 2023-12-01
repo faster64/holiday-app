@@ -5,15 +5,18 @@
     background-color: #fff;
     .api-item {
         .title {
+            max-width: 1000px;
+            margin: 0 auto;
             span {
                 font-size: 20px;
-                font-weight: 600;
+                font-weight: 700;
                 font-family: monospace;
             }
         }
         .content {
+            max-width: 1000px;
             padding: 0 48px;
-            margin-top: 24px;
+            margin: 24px auto;
             .item-title {
                 margin-bottom: 8px;
                 font-size: 16px;
@@ -67,7 +70,6 @@
             .request,
             .response,
             .description {
-                max-width: 1000px;
                 padding: 8px 16px;
                 margin-bottom: 24px;
                 border-radius: 4px;
