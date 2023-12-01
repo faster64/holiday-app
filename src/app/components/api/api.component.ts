@@ -66,4 +66,23 @@ export class ApiComponent extends BaseComponent {
         console.log(resp);
       });
   }
+
+  trackClickApi(apiUrl) {
+    const model: TrackingModel = {
+      ev: 'click-api',
+      o: window.location.origin,
+      p: (this.activatedRoute.snapshot as any)._routerState.url,
+      sw: window.outerWidth,
+      sh: window.outerHeight,
+      siw: window.innerWidth,
+      sih: window.innerHeight,
+      l: window.navigator.language,
+      ts: Math.floor(Date.now() / 1000),
+      d: apiUrl
+    };
+    this.trackingService
+      .tracking(model)
+      .pipe(takeUntil(this._onDestroySub))
+      .subscribe(resp => console.log('tracking status:', resp));
+  }
 }

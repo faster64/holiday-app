@@ -13,7 +13,7 @@
                 <div class="request-url">
                     <code *ngIf="api.method != 'GET'">{{api.url}}</code>
                     <code *ngIf="api.method == 'GET'">
-                      <a [href]="api.url" target="_blank">{{api.url}}</a>
+                      <a [href]="api.url" target="_blank" (click)="trackClickApi(api.url)">{{api.url}}</a>
                     </code>
                 </div>
             </div>
