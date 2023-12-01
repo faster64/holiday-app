@@ -1,0 +1,18 @@
+.convert-date {
+    height: 100%;
+    padding: 16px;
+    .now-info {
+        .title {
+            font-size: 16px;
+        }
+        .in4 {
+            .in4-title {
+                width: 120px;
+            }
+            .in4-value {}
+            span {
+                display: inline-block;
+            }
+        }
+    }
+}

@@ -18,6 +18,13 @@ const routes: Routes = [
     }
   },
   {
+    path: Routing.CONVERT_DATE.path,
+    loadChildren: () => import('./components/convert-date/convert-date.module').then(m => m.ConvertDateModule),
+    data: {
+      key: Routing.CONVERT_DATE.key,
+    }
+  },
+  {
     path: Routing.API.path,
     loadChildren: () => import('./components/api/api.module').then(m => m.ApiModule),
     data: {

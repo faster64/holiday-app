@@ -5,6 +5,8 @@ export class Routing {
   public static readonly TET_COUNTDOWN = new RoutingConfig('con-bao-nhieu-ngay-nua-la-den-tet', 'TET_COUNTDOWN', IndustryApp.NONE);
   public static readonly LIST_HOLIDAYS = new RoutingConfig('danh-sach-cac-ngay-le-o-viet-nam', 'LIST_HOLIDAYS', IndustryApp.NONE);
   public static readonly API = new RoutingConfig('api', 'API', IndustryApp.NONE);
+  public static readonly CONVERT_DATE = new RoutingConfig('chuyen-ngay-duong-sang-am', 'CONVERT_DATE', IndustryApp.NONE);
+  public static readonly CONVERT_DATE2 = new RoutingConfig('chuyen-ngay-am-sang-duong', 'CONVERT_DATE', IndustryApp.NONE);
 }
 
 export const CommonRedirect = Routing.TET_COUNTDOWN.path;

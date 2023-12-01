@@ -83,6 +83,24 @@
     width: auto;
 }
 
+@media screen and (max-width: 768px) {
+    #app {
+        .app-header {
+            padding: 4px 8px;
+            .item {
+                padding: 0 8px;
+                margin-right: 8px;
+                .text {
+                    font-size: 14px;
+                }
+                &.selected {
+                    border-bottom: 1px solid #fff;
+                }
+            }
+        }
+    }
+}
+
 @media screen and (max-width: 576px) {
     #app {
         .app-header {
