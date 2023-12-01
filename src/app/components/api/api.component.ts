@@ -1,6 +1,8 @@
 import { Component, Injector } from '@angular/core';
+import { takeUntil } from 'rxjs';
 import { TrackingModel } from 'src/app/models/base/tracking';
 import { BaseComponent } from 'src/app/shared/components/base-component';
+import { ApiDocumentationService } from 'src/app/shared/services/api-docs/api-docs.service';
 
 @Component({
   selector: 'app-api',
@@ -8,6 +10,9 @@ import { BaseComponent } from 'src/app/shared/components/base-component';
   styleUrls: ['./api.component.scss']
 })
 export class ApiComponent extends BaseComponent {
+
+  apis: any[] = [];
+
   codeMirrorOptions: any = {
     mode: "text/x-mysql",
     indentWithTabs: true,
@@ -21,48 +26,16 @@ export class ApiComponent extends BaseComponent {
     lint: true
   };
 
-  response = {
-    "total": 1,
-    "data": [
-      {
-        name: "Ngày giải phóng Miền Nam thống nhất đất nước",
-        description: `Ngày lễ 30 tháng 4, tên chính thức là Ngày Giải phóng miền Nam, thống nhất đất nước...`,
-        date: "30-04",
-        nextSolar: "30-04-2024",
-        nextLunar: "22-03-2024",
-        isSolar: true,
-        dayOffValue: 1,
-        categoryName: "Ngày lễ theo dương lịch",
-        remainingSeconds: 13047225,
-        offset: 0
-      },
-    ],
-    "status": "success",
-    "error": null
-  };
-
-  explain = {
-    "total": "Tổng số ngày lễ",
-    "status": "Success: nếu thành công - Failed: nếu thất bại",
-    "error": "Message lỗi",
-    "data": "Dữ liệu ngày lễ trả về, là 1 mảng các object ngày lễ",
-    "holiday object": {
-      "name": "Tên ngày lễ",
-      "description": "Mô tả về ngày lễ",
-      "date": "Ngày lễ",
-      "nextSolar": "ngày dương lịch tiếp theo tính từ hiện tại",
-      "nextLunar": "ngày âm lịch tiếp theo tính từ hiện tại",
-      "isSolar": "true nếu ngày lễ thuộc loại lễ dương lịch, false nếu là âm lịch",
-      "dayOffValue": "Số ngày được nghỉ",
-      "categoryName": "Loại ngày lễ",
-      "remainingSeconds": "Số giây còn lại tính từ hiện tại cho tới ngày lễ, ví dụ: 10000 = 2h 46p 40s"
-    }
-  }
-
   constructor(
-    injector: Injector
+    injector: Injector,
+    public apiDocumentationService: ApiDocumentationService
   ) {
     super(injector);
+  }
+
+  override ngOnInit(): void {
+    super.ngOnInit();
+    this.getPublicApis();
   }
 
   override createModel() {
@@ -78,5 +51,19 @@ export class ApiComponent extends BaseComponent {
       ts: Math.floor(Date.now() / 1000)
     };
     return model;
+  }
+
+  getPublicApis() {
+    this.isLoading = true;
+    this.apiDocumentationService
+      .getPublicApis()
+      .pipe(takeUntil(this._onDestroySub))
+      .subscribe(resp => {
+        this.isLoading = false;
+        if (resp.status == 'success') {
+          this.apis = resp.data;
+        }
+        console.log(resp);
+      });
   }
 }

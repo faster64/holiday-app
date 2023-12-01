@@ -1,33 +1,38 @@
 <div class="api-cmp">
-  <div class="api-item">
-    <div class="title">
-      1. Danh sách các ngày lễ ở Việt Nam
-    </div>
-    <div class="content">
-
-      <div class="item-title">
-        Request:
-      </div>
-      <div class="request">
-        <div class="request-method">GET</div>
-        <div class="request-url">
-          <code>https://corej2.com/api/holidays</code>
+    <div class="api-item" *ngFor="let api of apis; index as i">
+        <div class="title">
+            <span>{{i + 1}}. </span> <span>{{api.title}}</span>
         </div>
-      </div>
+        <div class="content">
 
-      <div class="item-title">
-        Response:
-      </div>
-      <div class="response">
-        <pre [innerHTML]="response | prettyjson: [true, 3]"></pre>
-      </div>
+            <div class="item-title">
+                Request:
+            </div>
+            <div class="request">
+                <div class="request-method">{{api.method}}</div>
+                <div class="request-url">
+                    <code *ngIf="api.method != 'GET'">{{api.url}}</code>
+                    <code *ngIf="api.method == 'GET'">
+                      <a [href]="api.url" target="_blank">{{api.url}}</a>
+                    </code>
+                </div>
+            </div>
 
-      <div class="item-title">
-        Ý nghĩa:
-      </div>
-      <div class="explain">
-        <pre [innerHTML]="explain | prettyjson: [true, 3]"></pre>
-      </div>
+            <div class="item-title">
+                Response:
+            </div>
+            <div class="response">
+                <pre [innerHTML]="api.response | prettyjson: [true, 3]"></pre>
+            </div>
+
+            <div class="item-title">
+                Mô tả:
+            </div>
+            <div class="description">
+                <pre [innerHTML]="api.description | prettyjson: [true, 3]"></pre>
+            </div>
+        </div>
     </div>
-  </div>
+
+    <progess-spinner-loading *ngIf="isLoading"></progess-spinner-loading>
 </div>
