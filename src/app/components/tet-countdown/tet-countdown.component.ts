@@ -43,7 +43,7 @@ export class TetCountdownComponent extends BaseComponent implements OnInit {
       .getHolidays()
       .pipe(takeUntil(this._onDestroySub))
       .subscribe(resp => {
-        if (resp.status == 'success') {
+        if (resp.code == 'success') {
           this.tetHoliday = resp.data.find(x => x.date.split('-')[0] == '01' && x.date.split('-')[1] == '01' && !x.isSolar) as Holiday;
           const items = this.tetHoliday.nextSolar.split('-');
           const date = new Date(`${items[2]}-${items[1]}-${items[0]}`);

@@ -35,7 +35,7 @@ export class HolidaysComponent extends BaseComponent {
       .getHolidays()
       .pipe(takeUntil(this._onDestroySub))
       .subscribe(resp => {
-        if (resp.status == 'success') {
+        if (resp.code == 'success') {
           let holidays = resp.data as Holiday[];
 
           this.groups = {};

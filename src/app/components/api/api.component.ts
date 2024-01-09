@@ -60,7 +60,7 @@ export class ApiComponent extends BaseComponent {
       .pipe(takeUntil(this._onDestroySub))
       .subscribe(resp => {
         this.isLoading = false;
-        if (resp.status == 'success') {
+        if (resp.code == 'success') {
           this.apis = resp.data;
         }
         console.log(resp);
